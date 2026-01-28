@@ -609,6 +609,32 @@ def copy_staging_to_main(cursor, table_name):
         log_error(f"Error executing SQL for {table_name}: {e}")
         return False
     
+# ============================================================================
+# Data cleaning
+# ============================================================================
+def run_data_cleaning(cursor):
+    """
+    Executes the data cleaning SQL script to fix swapped values and barcodes.
+    """
+    log("Running data cleaning script (data_cleaning.sql)...")
+    sql_file = SQL_SCRIPTS_PATH / "data_cleaning.sql"
+    
+    if not sql_file.exists():
+        log_error(f"Cleaning script not found: {sql_file}")
+        return False
+        
+    try:
+        with open(sql_file, 'r', encoding='utf-8') as f:
+            sql = f.read()
+        
+        # Execute the script as a single batch
+        cursor.execute(sql)
+        log_success("Data cleaning script executed successfully")
+        return True
+    except pyodbc.Error as e:
+        log_error(f"SQL Error during data cleaning: {e}")
+        return False
+    
 
 def step2_import_to_sql():
     """Step 2: Import CSV files to SQL Server."""
@@ -713,6 +739,12 @@ def step2_import_to_sql():
                 conn.rollback()
                 return False
         
+        # Data cleaning - only if the 'enrollee' table was actually updated
+        if 'enrollee' in tables_to_update:
+            if not run_data_cleaning(cursor):
+                conn.rollback()
+                return False
+
         conn.commit()
         
         # Step 2g: Verify final record counts
@@ -739,7 +771,8 @@ def step2_import_to_sql():
             conn.rollback()
         return False
     
-    
+
+
 # ============================================================================
 # STEP 3: EXPORT FUNCTIONS
 # ============================================================================
