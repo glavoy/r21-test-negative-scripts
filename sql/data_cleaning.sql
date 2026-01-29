@@ -1,9 +1,17 @@
--- Swap 096/110 mrc codes - these were incorrect in the 'r21_test_negative_2026-01-05' data dictionary
-
+-- Fix the swapped MRC values and corresponding SUBJID
 UPDATE enrollee
-SET mrc = CASE 
+SET 
+    -- Update the subjid by replacing the 4th, 5th, and 6th digits
+    subjid = CASE 
+                WHEN mrc = '096' THEN STUFF(subjid, 4, 3, '110')
+                WHEN mrc = '110' THEN STUFF(subjid, 4, 3, '096')
+                ELSE subjid
+             END,
+    -- Update the mrc field
+    mrc = CASE 
             WHEN mrc = '096' THEN '110'
             WHEN mrc = '110' THEN '096'
+            ELSE mrc
           END
 WHERE survey_id = 'r21_test_negative_2026-01-05'
   AND mrc IN ('096', '110');
