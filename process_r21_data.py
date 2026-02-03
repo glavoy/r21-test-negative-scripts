@@ -22,7 +22,7 @@ import socket
 # ============================================================================
 
 # Data folders to process (add new folder numbers here as needed)
-DATA_FOLDERS = ['11', '12']
+DATA_FOLDERS = ['11', '12', '13', '14']
 
 # Tables to process (add new tables here as needed)
 TABLE_NAMES = ['enrollee', 'formchanges']
