@@ -11,7 +11,9 @@ VALUES
 ('R21-096-NYZI', 'R21-096-NYZ1'),
 ('R21-096-E121', 'R21-096-E12I'),
 ('R21-096-QL06', 'R21-096-QLO6'),
-('R21-096-Z6GI', 'R21-096-Z6G1');
+('R21-096-Z6GI', 'R21-096-Z6G1')
+('R21-096-4541', 'R21-096-454I'),
+('R21-110-31VT', 'R21-110-3IVT');
 
 
 --update the barcodes in the enrollee table
