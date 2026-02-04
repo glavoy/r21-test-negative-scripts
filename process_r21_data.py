@@ -22,7 +22,7 @@ import socket
 # ============================================================================
 
 # Data folders to process (add new folder numbers here as needed)
-DATA_FOLDERS = ['11', '12', '13', '14']
+DATA_FOLDERS = ['11', '14']
 
 # Tables to process (add new tables here as needed)
 TABLE_NAMES = ['enrollee', 'formchanges']
@@ -38,6 +38,12 @@ ZIP_OUTPUT_PATH = Path('C:/inetpub/wwwroot/r21neg/wwwroot/downloads/r21_neg_data
 
 # SQL scripts path
 SQL_SCRIPTS_PATH = Path(__file__).parent / 'sql'
+
+# Field configurations
+FIELD_CONFIG = {
+    frozenset(['starttime', 'startdate', 'deviceid', 'deviceid2', 'mrc', 'subjid', 'district', 'mayuge_warning', 'busia_warning', 'subcounty', 'parish', 'village', 'placeofresidence', 'dob', 'age_calculated', 'agemonths_calculated', 'age_at_apr2025', 'age_in_range', 'age', 'agemonths', 'age_eligible', 'age_warning', 'age_warning_reason', 'mal_test_eligible', 'consent_eligible', 'participantsname', 'gender', 'hhheadeduclevel', 'diagnostic', 'result', 'vx_card', 'vx_any', 'vx_any_no', 'vx_any_no_oth', 'vx_doses_received', 'vx_doses_received_ver', 'vx_doses_received_ver_oth', 'vx_dose1_where', 'vx_dose1_where_oth', 'vx_dose1_date', 'vx_dose1_date_ver', 'vx_dose1_date_ver_oth', 'vx_dose2_where', 'vx_dose2_where_oth', 'vx_dose2_date', 'dose2_warning_time', 'vx_dose2_datecheck', 'vx_dose2_date_ver', 'vx_dose2_date_ver_oth', 'vx_dose3_where', 'vx_dose3_where_oth', 'vx_dose3_date', 'dose3_warning_time', 'vx_dose3_datecheck', 'vx_dose3_date_ver', 'vx_dose3_date_ver_oth', 'vx_dose4_where', 'vx_dose4_where_oth', 'vx_dose4_date', 'dose4_warning_time', 'vx_dose4_datecheck', 'vx_dose4_date_ver', 'vx_dose4_date_ver_oth', 'vx_dose_summary', 'vx_doses_miss', 'vx_doses_miss_reas', 'vx_doses_miss_reas_oth', 'vx_dose_off_sched', 'vx_doses_offsched_reas', 'vx_offsched_miss_reas_oth', 'hib_any', 'hib_doses_received', 'hib_doses_received_ver', 'hib_doses_received_ver_oth', 'hib_dose1_where', 'hib_dose1_where_oth', 'hib_dose1_date', 'hib_dose1_date_ver', 'hib_dose1_date_ver_oth', 'hib_dose2_where', 'hib_dose2_where_oth', 'hib_dose2_date', 'hibdose2_warning_time', 'hib_dose2_datecheck', 'hib_dose2_date_ver', 'hib_dose2_date_ver_oth', 'hib_dose3_where', 'hib_dose3_where_oth', 'hib_dose3_date', 'hibdose3_warning_time', 'hib_dose3_datecheck', 'hib_dose3_date_ver', 'hib_dos32_date_ver_oth', 'hib_dose_summary', 'timetobed', 'spray', 'bednetlastnight', 'bednettwoweeks', 'prevdiag', 'prevdiag_when', 'prevdiag_lastmonth', 'prevdiag_al', 'prevdiag_othermeds', 'prevdiag_descothermed', 'consent', 'consent2', 'uid', 'uid2', 'fpbarcode1_r21', 'fpbarcode2_r21', 'enroll_immrse', 'fpbarcode1_immrse', 'fpbarcode2_immrse', 'comments', 'uniqueid', 'swver', 'survey_id', 'lastmod', 'stoptime']): 'copy_enrollee_staging_to_main_2026-01-05.sql',
+    frozenset(['starttime', 'startdate', 'deviceid', 'deviceid2', 'mrc', 'subjid', 'district', 'mayuge_warning', 'busia_warning', 'subcounty', 'parish', 'village', 'placeofresidence', 'dob', 'age_calculated', 'agemonths_calculated', 'age_at_apr2025', 'age_in_range', 'age', 'agemonths', 'age_eligible', 'age_warning', 'age_warning_reason', 'mal_test_eligible', 'ill_noteligible', 'consent_eligible', 'participantsname', 'gender', 'hhheadeduclevel', 'diagnostic', 'result', 'vx_card', 'vx_card_no', 'vx_card_no_oth', 'vx_any', 'vx_any_no', 'vx_any_no_oth', 'vx_doses_received', 'vx_doses_received_ver', 'vx_doses_received_ver_oth', 'vx_dose1_where', 'vx_dose1_where_oth', 'vx_dose1_date', 'vx_dose1_date_ver', 'vx_dose1_date_ver_oth', 'vx_dose2_where', 'vx_dose2_where_oth', 'vx_dose2_date', 'dose2_warning_time', 'vx_dose2_datecheck', 'vx_dose2_date_ver', 'vx_dose2_date_ver_oth', 'vx_dose3_where', 'vx_dose3_where_oth', 'vx_dose3_date', 'dose3_warning_time', 'vx_dose3_datecheck', 'vx_dose3_date_ver', 'vx_dose3_date_ver_oth', 'vx_dose4_where', 'vx_dose4_where_oth', 'vx_dose4_date', 'dose4_warning_time', 'vx_dose4_datecheck', 'vx_dose4_date_ver', 'vx_dose4_date_ver_oth', 'vx_dose_summary', 'vx_doses_miss', 'vx_doses_miss_reas', 'vx_doses_miss_reas_oth', 'vx_dose_off_sched', 'vx_doses_offsched_reas', 'vx_offsched_miss_reas_oth', 'hib_any', 'hib_doses_received', 'hib_doses_received_ver', 'hib_doses_received_ver_oth', 'hib_dose1_where', 'hib_dose1_where_oth', 'hib_dose1_date', 'hib_dose1_date_ver', 'hib_dose1_date_ver_oth', 'hib_dose2_where', 'hib_dose2_where_oth', 'hib_dose2_date', 'hibdose2_warning_time', 'hib_dose2_datecheck', 'hib_dose2_date_ver', 'hib_dose2_date_ver_oth', 'hib_dose3_where', 'hib_dose3_where_oth', 'hib_dose3_date', 'hibdose3_warning_time', 'hib_dose3_datecheck', 'hib_dose3_date_ver', 'hib_dos32_date_ver_oth', 'hib_dose_summary', 'timetobed', 'spray', 'bednetlastnight', 'bednettwoweeks', 'prevdiag', 'prevdiag_when', 'prevdiag_lastmonth', 'prevdiag_al', 'prevdiag_othermeds', 'prevdiag_descothermed', 'consent', 'consent2', 'uid', 'uid2', 'fpbarcode1_r21', 'fpbarcode2_r21', 'enroll_immrse', 'fpbarcode1_immrse', 'fpbarcode2_immrse', 'comments', 'uniqueid', 'swver', 'survey_id', 'lastmod', 'stoptime']): 'copy_enrollee_staging_to_main_2026-02-02.sql'
+}
 
 
 # ============================================================================
@@ -331,7 +337,11 @@ def truncate_table(cursor, table_name):
         cursor.execute(f"TRUNCATE TABLE {table_name}")
         cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
         count_after = cursor.fetchone()[0]
-        log(f"Truncated table: {table_name} (now has {count_after} rows)")
+        if count_after == 0:
+            log(f"Truncated table: {table_name} (now has {count_after} rows)")
+        else:
+            log_error(f"Failed to truncate {table_name}. {count_after} rows remaining.")
+            raise Exception(f"Failed to truncate {table_name}")
     except pyodbc.Error as e:
         log_error(f"Failed to truncate {table_name}: {e}")
         raise
@@ -382,14 +392,9 @@ def import_csv_to_table(cursor, csv_path, table_name):
     
     # Get columns
     csv_columns = get_csv_columns(csv_path)
-    table_columns = get_table_columns(cursor, table_name)
     
     # Filter out ignored columns from CSV columns
     csv_columns_filtered = [col for col in csv_columns if col not in IGNORED_COLUMNS]
-    
-    # Verify columns match
-    if not verify_columns(csv_columns_filtered, table_columns, csv_path.name, table_name):
-        return False
     
     # Build insert statement with filtered column names to handle different ordering
     columns_str = ', '.join([f"[{col}]" for col in csv_columns_filtered])
@@ -414,7 +419,7 @@ def import_csv_to_table(cursor, csv_path, table_name):
             row_count += 1
     
     log(f"Imported {row_count} rows into {table_name}")
-    return True
+    return csv_columns
 
 
 def verify_staging_data(cursor):
@@ -577,20 +582,37 @@ def create_backup_tables(cursor):
 
 
 
-def copy_staging_to_main(cursor, table_name):
+def copy_staging_to_main(cursor, table_name, csv_columns=None):
     """
     Copy data from staging table to main table by executing external SQL script.
     The SQL scripts handle all type conversions and transformations.
     """
     log(f"Copying data from {table_name}_staging to {table_name}")
     
-    # Path to SQL script
-    sql_file = SQL_SCRIPTS_PATH / f"copy_{table_name}_staging_to_main.sql"
-    
-    if not sql_file.exists():
+    sql_file = None
+    if table_name == 'enrollee':
+        if csv_columns:
+            # Find the correct SQL script from FIELD_CONFIG
+            csv_columns_set = frozenset(csv_columns)
+            sql_file_name = FIELD_CONFIG.get(csv_columns_set)
+            if sql_file_name:
+                sql_file = SQL_SCRIPTS_PATH / sql_file_name
+            else:
+                log_error(f"No matching SQL script found for the given columns in {table_name}_staging.")
+                return False
+        else:
+            log_error("No CSV columns provided for enrollee table.")
+            return False
+    else:
+        # For other tables, use the default script
+        sql_file = SQL_SCRIPTS_PATH / f"copy_{table_name}_staging_to_main.sql"
+
+    if not sql_file or not sql_file.exists():
         log_error(f"SQL script not found: {sql_file}")
         return False
     
+    log(f"Using SQL script: {sql_file.name}")
+
     # Read SQL from file
     try:
         with open(sql_file, 'r', encoding='utf-8') as f:
@@ -653,6 +675,7 @@ def step2_import_to_sql():
         
         # Step 2b: Import CSV files to staging tables
         log("Importing CSV files to staging tables...")
+        csv_headers = {}
         for folder in DATA_FOLDERS:
             folder_path = DATA_ROOT / folder
             
@@ -670,10 +693,14 @@ def step2_import_to_sql():
                     conn.rollback()
                     return False
                 
-                if not import_csv_to_table(cursor, csv_path, f"{table_name}_staging"):
+                csv_columns = import_csv_to_table(cursor, csv_path, f"{table_name}_staging")
+                if not csv_columns:
                     conn.rollback()
                     return False
-        
+                
+                if table_name not in csv_headers:
+                    csv_headers[table_name] = csv_columns
+
         conn.commit()
         log("All CSV files imported to staging tables")
         
@@ -735,7 +762,7 @@ def step2_import_to_sql():
         # Step 2f: Copy from staging to main using SQL transformation scripts
         log("Copying data from staging to main tables...")
         for table_name in tables_to_update:
-            if not copy_staging_to_main(cursor, table_name):
+            if not copy_staging_to_main(cursor, table_name, csv_headers.get(table_name)):
                 conn.rollback()
                 return False
         

@@ -33,3 +33,11 @@ WHERE map1.incorrect_barcode IS NOT NULL
    OR map2.incorrect_barcode IS NOT NULL
    OR map3.incorrect_barcode IS NOT NULL
    OR map4.incorrect_barcode IS NOT NULL;
+
+
+
+-- fix duplicate subjid's - these were cause in version 2026-02-02 since we did not change the deviceid, but rather the survey id - by mistake.
+-- this was initially caused by using the incorrect mrc codes and then changing them in the code above, and then changing them 
+-- to eb the correct ones in new data dictionary.
+update enrollee set deviceid = '802', deviceid2 = '802', subjid = '8020960001' where uniqueid = 'c1ee0796-f9dd-49b1-a077-fa407a7b72bf'
+update enrollee set deviceid = '802', deviceid2 = '802', subjid = '8020960002' where uniqueid = '21478b4b-9323-4a79-b5da-e4e74f2e518e'
