@@ -41,3 +41,13 @@ WHERE map1.incorrect_barcode IS NOT NULL
 -- to eb the correct ones in new data dictionary.
 update enrollee set deviceid = '802', deviceid2 = '802', subjid = '8020960001' where uniqueid = 'c1ee0796-f9dd-49b1-a077-fa407a7b72bf'
 update enrollee set deviceid = '802', deviceid2 = '802', subjid = '8020960002' where uniqueid = '21478b4b-9323-4a79-b5da-e4e74f2e518e'
+
+
+-- An RA viewed/modifie oldd data with the new version of the software, so we need to revert back to the original data
+update enrollee set mrc = '096' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set subjid = '1010960089' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set swver = 'GiSTX 0.0.8' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set survey_id = 'r21_test_negative_2026-01-05' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set lastmod = '2026-02-02 15:32:55.010614' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set ill_noteligible = NULL where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set vx_card_no = NULL where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'

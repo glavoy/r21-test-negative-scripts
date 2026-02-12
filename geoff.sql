@@ -1,3 +1,6 @@
+USE r21_neg
+
+
 -- create barcode_corrections table
 CREATE TABLE barcode_corrections (
     incorrect_barcode VARCHAR(50) PRIMARY KEY,
@@ -50,4 +53,20 @@ WHERE EXISTS (
        OR e.fpbarcode1_immrse IN (bc.incorrect_barcode, bc.correct_barcode)
        OR e.fpbarcode2_immrse IN (bc.incorrect_barcode, bc.correct_barcode)
 );
+
+select subjid, count(*) from enrollee group by subjid having count(*) > 1
+select * from enrollee where subjid = '1011100001'
+select * from enrollee where subjid = '1010960089'
+
+select * from formchanges where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+
+update enrollee set mrc = '096' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set subjid = '1010960089' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set swver = 'GiSTX 0.0.8' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set survey_id = 'r21_test_negative_2026-01-05' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set lastmod = '2026-02-02 15:32:55.010614' where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set ill_noteligible = NULL where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+update enrollee set vx_card_no = NULL where uniqueid = '4cf28a97-6efa-486d-93a9-7af8ecca2597'
+
+
 
